@@ -3,20 +3,20 @@ language: python
 
 
 python:
-	-"3.8"
+  - "3.8"
 
 node_js:
-	-node
+  - node
 
 cache:
-	pip: true
-	npm: true
+  pip: true
+  npm: true
 
 install:
-	-npm install
-	-npm install -g serverless
-	-pip install -r requirements.txt
+  - npm install
+  - npm install -g serverless
+  - pip install -r requirements.txt
 
 script:
-	-python -m unittest discover -vb tests/
+  - python -m unittest discover -vb tests/
 

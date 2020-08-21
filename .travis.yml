@@ -1,0 +1,40 @@
+dist:focal
+
+language:python
+
+python:
+   -"3.8"
+
+node_js:
+-none
+
+cache:
+pip: true
+npm: true
+
+install:
+-npm install
+-npm install -g serverless
+-pip install -r requirements.txt
+
+script:
+python -m unittest discover -vb tests/
+
+deploy:
+  - provider: script
+    script: serverless deploy --verbose --stage dev --region 'us-east-1' --conceal
+    edge: true
+    on:
+      branch: dev
+
+  - provider: script
+    script: serverless deploy --verbose --stage stg --region 'us-east-2' --conceal
+    edge: true
+    on:
+      branch: stg
+
+  - provider: script
+    script: serverless deploy --verbose --stage prd --region 'us-west-2' --conceal
+    edge: true
+    on:
+      branch: master

@@ -1,15 +1,11 @@
+os: linux
 dist: focal
-language: python
-
-
-python:
-  - "3.8"
+language: node_js
 
 node_js:
   - node
 
 cache:
-  pip: true
   npm: true
 
 install:
